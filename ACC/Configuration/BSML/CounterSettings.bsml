@@ -1,0 +1,60 @@
+﻿<vertical xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd' spacing='1' horizontal-fit='PreferredSize' vertical-fit='PreferredSize'>
+	<slider-setting text='Accuracy Threshold' hover-hint='A hit score below this score will break the Accuracy Combo'
+										 value='AccuracyThreshold' apply-on-change='true' show-buttons='true'
+										 integer-only='true' min='0' max='115' increment='1'/>
+	<checkbox-setting text='Show On Results Screen' hover-hint='Do you want the number of good cuts and your max combo to be shown on the results screen?'
+										value='ShowOnResultsScreen' apply-on-change='true'/>
+	<checkbox-setting text='Hide Combo Break Animation' hover-hint='Is the combo break animation too distracting? Turn this on to hide it.'
+										value='HideComboBreakAnimation' apply-on-change='true'/>
+
+	<checkbox-setting text='Enable Mini Game' hover-hint='Enable/Disable Max ACC Combo MiniGame'
+										value='EnableComboMiniGame' apply-on-change='true'/>
+	
+	<text text=':Extra Counters:' font-size='5' align='Center'/>
+	
+	<dropdown-list-setting text='Max Combo Position' hover-hint='Where do you want the Max Combo Counter to be displayed? This counter shows your current best streak.'
+												 value='MaxComboPosition' options='ExtraCounterPositionsList' formatter='ExtraCounterPositionsFormat' apply-on-change='true'/>
+	<dropdown-list-setting text='Low Acc Cuts Position' hover-hint='Where do you want the Low Acc Cuts Counter to be displayed? This counter shows how many times you got a score below the Combo Threshold.'
+												 value='LowAccCutsPosition' options='ExtraCounterPositionsList' formatter='ExtraCounterPositionsFormat' apply-on-change='true'/>
+
+	<text text=':Enable/Disable combo breaking events:' font-size='5' align='Center'/>
+
+	<checkbox-setting text='Break On Miss' hover-hint='Should the combo break when you miss a block?'
+										value='BreakOnMiss' apply-on-change='true'/>
+	<checkbox-setting text='Break On Bad Cut' hover-hint='Should the combo break when you cut a block in the wrong direction or with the wrong saber?'
+										value='BreakOnBadCut' apply-on-change='true'/>
+	<checkbox-setting text='Break On Bomb' hover-hint='Should the combo break when you hit a bomb?'
+										value='BreakOnBomb' apply-on-change='true'/>
+	<checkbox-setting text='Break On Wall' hover-hint='Should the combo break when you&#39;re banging your head against a wall?'
+										value='BreakOnWall' apply-on-change='true'/>
+
+	<!--ADD BUTTON(s) TO RESET STRINGS TO DEFAULT!-->
+		<clickable-text text=':Counter Text Settings:' font-size='5' align='Center' hover-hint='Any of the values below can be shown in any counter by using its identifier.&#xA;
+%t = Accuracy Threshold&#xA;
+%c = Combo&#xA;
+%m = Max Combo&#xA;
+%h = High Acc Cuts (Good Cuts)&#xA;
+%l = LowAccCuts (Bad Cuts)&#xA;
+%n = NoteCount (Total Cuts)'/>
+
+	<horizontal>
+		<string-setting text='Combo Label Text' hover-hint='Change the Combo label text to anything you like. (Hover over the Counter Text Settings text for information about the formatting)'
+										value='ComboLabelText' apply-on-change='true' bind-value='true'/>
+		<button text='⭯' hover-hint='Reset to default' click-event='reset-combo-label-text'/>
+	</horizontal>
+	<horizontal>
+		<string-setting text='Combo Counter Text' hover-hint='Change the Combo Counter text to anything you like. (Hover over the Counter Text Settings text for information about the formatting)'
+										value='ComboCounterText' apply-on-change='true' bind-value='true'/>
+		<button text='⭯' hover-hint='Reset to default' click-event='reset-combo-counter-text'/>
+	</horizontal>
+	<horizontal>
+		<string-setting text='Max Combo Counter Text' hover-hint='Change the Max Combo Counter text to anything you like. (Hover over the Counter Text Settings text for information about the formatting)'
+										value='MaxComboCounterText' apply-on-change='true' bind-value='true' interactable='~is-max-combo-counter-enabled' font-color='~is-max-combo-counter-enabled-color'/>
+		<button text='⭯' hover-hint='Reset to default' click-event='reset-max-combo-counter-text' interactable='~is-max-combo-counter-enabled'/>
+	</horizontal>
+	<horizontal>
+		<string-setting text='Low Acc Cuts Counter Text' hover-hint='Change the Low Acc Cuts Counter text to anything you like. (Hover over the Counter Text Settings text for information about the formatting)'
+										value='LowAccCutsCounterText' apply-on-change='true' bind-value='true' interactable='~is-low-acc-cuts-counter-enabled' font-color='~is-low-acc-cuts-counter-enabled-color'/>
+		<button text='⭯' hover-hint='Reset to default' click-event='reset-low-acc-cuts-counter-text' interactable='~is-low-acc-cuts-counter-enabled'/>
+	</horizontal>
+</vertical>
