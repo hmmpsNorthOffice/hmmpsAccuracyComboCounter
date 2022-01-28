@@ -1,4 +1,6 @@
-﻿using BeatSaberMarkupLanguage.Attributes;
+﻿#define RT_Visible_In_Settings
+
+using BeatSaberMarkupLanguage.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,12 +99,14 @@ namespace ACC.Configuration
 			set { PluginConfig.Instance.HideComboBreakAnimation = value; }
 		}
 
-		[UIValue("EnableComboMiniGame")]
-		public virtual bool EnableComboMiniGame
+#if RT_Visible_In_Settings
+		[UIValue("EnableRollingThreshold")] 
+		public virtual bool EnableRollingThreshold
 		{
-			get { return PluginConfig.Instance.EnableComboMiniGame; }
-			set { PluginConfig.Instance.EnableComboMiniGame = value; }
-		}
+			get { return PluginConfig.Instance.EnableRollingThreshold; }
+			set { PluginConfig.Instance.EnableRollingThreshold = value; }
+		} 
+#endif
 
 		[UIValue("ComboLabelText")]
 		public virtual string ComboLabelText

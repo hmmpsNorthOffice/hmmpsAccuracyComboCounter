@@ -1,4 +1,5 @@
-﻿<vertical xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd' spacing='1' horizontal-fit='PreferredSize' vertical-fit='PreferredSize'>
+﻿
+<vertical xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd' spacing='1' horizontal-fit='PreferredSize' vertical-fit='PreferredSize'>
 	<slider-setting text='Accuracy Threshold' hover-hint='A hit score below this score will break the Accuracy Combo'
 										 value='AccuracyThreshold' apply-on-change='true' show-buttons='true'
 										 integer-only='true' min='0' max='115' increment='1'/>
@@ -6,9 +7,9 @@
 										value='ShowOnResultsScreen' apply-on-change='true'/>
 	<checkbox-setting text='Hide Combo Break Animation' hover-hint='Is the combo break animation too distracting? Turn this on to hide it.'
 										value='HideComboBreakAnimation' apply-on-change='true'/>
-
-	<checkbox-setting text='Enable Mini Game' hover-hint='Enable/Disable Max ACC Combo MiniGame'
-										value='EnableComboMiniGame' apply-on-change='true'/>
+	<!-- Expand comment around next line to Easter Egg    RT_Visible_In_Settings -->
+	<checkbox-setting text='Enable Rolling Threshold' hover-hint='The Accuracy Threshold will move up or down based on Max Combo Reached'
+										value='EnableRollingThreshold' apply-on-change='true'/> 
 	
 	<text text=':Extra Counters:' font-size='5' align='Center'/>
 	

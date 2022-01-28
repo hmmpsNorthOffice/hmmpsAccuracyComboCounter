@@ -81,70 +81,31 @@ namespace ACC.ResultsView
 		}
 
 		private void SetResultsViewText()
-		{
+		{			
 			// Empty the text fields so they can be filled with new information
 			EmptyResultsViewText();
 
-			// Conditionally launch MiniGame (hmmps)
-			if (PluginConfig.Instance.EnableComboMiniGame) MaxComboMiniGame(); 
+			// Roll the Threshold if RT enabled
+			if (Utils.RollingThreshold.RollingThresholdEnabled()) Utils.RollingThreshold.RollThreshold(accManager); 
 
 			// Set the text
 			if (PluginConfig.Instance.ShowOnResultsScreen && accResultText != null && accMaxComboText != null)
 			{
 				accResultText.text = accManager.InsertValuesInFormattedString(config.ResultText);
 				string maxComboText = accManager.LowAccCuts > 0 ? config.MaxComboText : config.FullComboText;
-				accMaxComboText.text = accManager.InsertValuesInFormattedString(maxComboText);
+
+				maxComboText = accManager.InsertValuesInFormattedString(maxComboText);
+
+				// Append formatted Threshold Targets to maxComboText ... example "Max ACC Combo  (50|100|200)"
+				// Ideas for better formatting?  Not happy with it yet.
+				if (Utils.RollingThreshold.RollingThresholdEnabled())
+				{
+					maxComboText = maxComboText + Utils.RollingThreshold.RT_Info(accManager);
+				}
+
+				accMaxComboText.text = maxComboText;
 			}
 		}
-
-		// hmmps minigame logic ... feel free to adjust.
-		private class MiniGameValues
-		{
-			                        // PrecisionLevel    50,  60,  70,  80,  90,  100,  110 
-			internal static readonly int[] NotGood =  {  50,  50,  50,  50,  50,  25,    5 };
-			internal static readonly int[] Good =     { 100, 100, 100, 100, 100,  50,   10 };
-			internal static readonly int[] VeryGood = { 300, 300, 200, 200, 200,  75,   25 };
-		}
-		private void MaxComboMiniGame()
-		{
-			// use temp int rather than our persistent variable
-			int tempAccuracyThreshold = PluginConfig.Instance.AccuracyThreshold;
-
-			// use math to convert AccuracyThreshold to list index integer ( similar to enum value )
-			int PrecisionEnum = (tempAccuracyThreshold - 50) / 10;
-
-			// bounds check just to be safe
-			if (PrecisionEnum < 0) PrecisionEnum = 0; else if (PrecisionEnum > 6) PrecisionEnum = 6;
-
-			if (accManager.MaxCombo < MiniGameValues.NotGood[PrecisionEnum])
-			{
-				Plugin.Log.Notice("Really Bad ... (-1)");
-				tempAccuracyThreshold--; 
-			}
-			else if (accManager.MaxCombo < MiniGameValues.Good[PrecisionEnum])
-			{
-				Plugin.Log.Notice("Could do better ... but ok ... no penalty");
-				// tempAccuracyThreshold--; removing penalty!
-			}
-			else if (accManager.MaxCombo < MiniGameValues.VeryGood[PrecisionEnum])
-			{
-				Plugin.Log.Notice("Pretty Good ... (+1)");
-				tempAccuracyThreshold++; 
-			}
-			else if (accManager.MaxCombo >= MiniGameValues.VeryGood[PrecisionEnum])
-			{
-				Plugin.Log.Notice("Very Good! ... (+2)");
-				tempAccuracyThreshold += 2; 
-			}
-			else { Plugin.Log.Debug("Mini Game conditional flawed"); }
-
-			// bounds check
-			if(tempAccuracyThreshold < 0) { PluginConfig.Instance.AccuracyThreshold = 0; }
-			else if (tempAccuracyThreshold > 115) { PluginConfig.Instance.AccuracyThreshold = 115; }
-			// save the new threshold
-			else PluginConfig.Instance.AccuracyThreshold = tempAccuracyThreshold;
-		}
-
 		private void EmptyResultsViewText()
 		{
 			if (accResultText != null && accMaxComboText != null)
@@ -153,5 +114,6 @@ namespace ACC.ResultsView
 				accMaxComboText.text = "";
 			}
 		}
+			
 	}
 }

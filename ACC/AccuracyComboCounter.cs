@@ -1,4 +1,5 @@
 ﻿#nullable enable
+#define RT_Visible_In_Settings
 using CountersPlus.ConfigModels;
 using CountersPlus.Counters.Interfaces;
 using CountersPlus.Custom;
@@ -247,7 +248,15 @@ namespace ACC
 			if (comboCounterText != null)
 				comboCounterText.text = accManager.InsertValuesInFormattedString(config.ComboCounterText);
 			if (maxComboCounter != null)
+
+#if RT_Visible_In_Settings
+
 				maxComboCounter.text = accManager.InsertValuesInFormattedString(config.MaxComboCounterText);
+#else
+				// remove Easter Egg text if is there
+				maxComboCounter.text = accManager.InsertValuesInFormattedString(Utils.RollingThreshold.RE(config.MaxComboCounterText));
+#endif
+
 			if (lowAccCutsCounter != null)
 				lowAccCutsCounter.text = accManager.InsertValuesInFormattedString(config.LowAccCutsCounterText);
 		}

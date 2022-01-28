@@ -150,6 +150,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultsView\AccResultsViewController.cs" />
     <Compile Include="Utils\EnvironmentUtils.cs" />
+    <Compile Include="Utils\RollingThreshold.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />

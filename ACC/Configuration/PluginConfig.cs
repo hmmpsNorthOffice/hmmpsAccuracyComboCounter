@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define RT_Visible_In_Settings
+
+using System;
 using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
 
@@ -12,7 +14,10 @@ namespace ACC.Configuration
 		public virtual int AccuracyThreshold { get; set; } = 0;
 		public virtual bool ShowOnResultsScreen { get; set; } = true;
 		public virtual bool HideComboBreakAnimation { get; set; } = false;
-		public virtual bool EnableComboMiniGame { get; set; } = false;
+
+#if RT_Visible_In_Settings
+		public virtual bool EnableRollingThreshold { get; set; } = false; 
+#endif
 		public ExtraCounterPositions MaxComboPosition { get; set; } = ExtraCounterPositions.Disabled;
 		public ExtraCounterPositions LowAccCutsPosition { get; set; } = ExtraCounterPositions.Disabled;
 		public virtual bool BreakOnMiss { get; set; } = true;

@@ -86,6 +86,7 @@ namespace ACC.Core
 				provisionalCutCount++;
 			else if (type == IncreaseComboType.ProvisionalFinish)
 				provisionalCutCount--;
+			
 
 			if (type == IncreaseComboType.OnCut || type == IncreaseComboType.ProvisionalFinish)
 				IncreaseCombo();
