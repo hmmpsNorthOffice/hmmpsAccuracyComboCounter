@@ -23,7 +23,7 @@ namespace ACC.Utils
 			// use temp int rather than our persistent variable
 			int tempAccuracyThreshold = PluginConfig.Instance.AccuracyThreshold;
 
-			int RTListIndex = GetRTListIndex();
+			int RTListIndex = GetRTListIndex(PluginConfig.Instance.AccuracyThreshold);
 
 			if (accManager.MaxCombo < RollingThreshold.Good[RTListIndex])
 			{
@@ -52,9 +52,9 @@ namespace ACC.Utils
 			else PluginConfig.Instance.AccuracyThreshold = tempAccuracyThreshold;
 		}
 
-		internal static string RT_Info(AccManager accManager)
+		internal static string RT_Info(AccManager accManager, int currentAccuracyThreshold)
 		{
-			int RTListIndex = GetRTListIndex();
+			int RTListIndex = GetRTListIndex(currentAccuracyThreshold);
 
 			// feel free to improve color choices  https://www.december.com/html/spec/colorhex.html
 			string color_red = "<color=#FF3300>";   // nectarine (Safe Hex3)	#FF3300
@@ -77,10 +77,10 @@ namespace ACC.Utils
 			// return " (" + Good[RTListIndex] + "|" + Better[RTListIndex] + "|" + Best[RTListIndex] + ")";
 		}
 
-		private static int GetRTListIndex()
+		private static int GetRTListIndex(int currentAccuracyThreshold)
 		{
 			// use math to convert AccuracyThreshold to list index integer
-			int RTListIndex = (PluginConfig.Instance.AccuracyThreshold - 50) / 10;
+			int RTListIndex = (currentAccuracyThreshold - 50) / 10;
 
 			// bounds check
 			if (RTListIndex < 0)  // nicely formatted bounds check :)

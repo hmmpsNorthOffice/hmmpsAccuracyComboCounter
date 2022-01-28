@@ -85,6 +85,9 @@ namespace ACC.ResultsView
 			// Empty the text fields so they can be filled with new information
 			EmptyResultsViewText();
 
+
+			int previousAccThreshold = PluginConfig.Instance.AccuracyThreshold;
+
 			// Roll the Threshold if RT enabled
 			if (Utils.RollingThreshold.RollingThresholdEnabled()) Utils.RollingThreshold.RollThreshold(accManager); 
 
@@ -100,7 +103,7 @@ namespace ACC.ResultsView
 				// Ideas for better formatting?  Not happy with it yet.
 				if (Utils.RollingThreshold.RollingThresholdEnabled())
 				{
-					maxComboText = maxComboText + Utils.RollingThreshold.RT_Info(accManager);
+					maxComboText = maxComboText + Utils.RollingThreshold.RT_Info(accManager, previousAccThreshold);
 				}
 
 				accMaxComboText.text = maxComboText;
