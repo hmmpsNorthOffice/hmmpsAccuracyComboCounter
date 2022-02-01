@@ -37,7 +37,7 @@ namespace ACC.Configuration
 		internal const string DefaultMaxComboCounterText = "Max Combo : %m";
 		internal const string DefaultLowAccCutsCounterText = "Cuts Below %t : %l";
 		internal const string DefaultResultText = "%h<size=70%> / %n</size>";
-		internal const string DefaultMaxComboText = "MAX ACC COMBO %m";
+		internal const string DefaultMaxComboText = "ACC COMBO %m";
 		internal const string DefaultFullComboText = "FULL ACC COMBO";
 
 

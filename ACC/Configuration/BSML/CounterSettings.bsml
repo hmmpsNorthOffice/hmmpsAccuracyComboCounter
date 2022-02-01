@@ -8,9 +8,14 @@
 	<checkbox-setting text='Hide Combo Break Animation' hover-hint='Is the combo break animation too distracting? Turn this on to hide it.'
 										value='HideComboBreakAnimation' apply-on-change='true'/>
 	<!-- Expand comment around next line to Easter Egg    RT_Visible_In_Settings -->
-	<checkbox-setting text='Enable Rolling Threshold' hover-hint='The Accuracy Threshold will move up or down based on Max Combo Reached'
-										value='EnableRollingThreshold' apply-on-change='true'/> 
-	
+	<checkbox-setting text='Enable Rolling Threshold' hover-hint='Enbabling Rolling Threshold will adjust the Accuracy Threshold (AT) after each play based on the maximum Acc combo achieved.&#xA;
+		Below Good combo = AT - 1&#xA;
+		Good combo = No Change&#xA;
+		Better combo = AT + 1&#xA;
+		Best combo = AT + 2&#xA; 
+		The values that determine Good, Better, and Best combos are listed on the results menu.&#xA;'
+	value='EnableRollingThreshold' apply-on-change='true'/>
+
 	<text text=':Extra Counters:' font-size='5' align='Center'/>
 	
 	<dropdown-list-setting text='Max Combo Position' hover-hint='Where do you want the Max Combo Counter to be displayed? This counter shows your current best streak.'

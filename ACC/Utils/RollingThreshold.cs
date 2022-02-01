@@ -65,13 +65,13 @@ namespace ACC.Utils
 			string font_normal = "<size=100%>";
 
 			if (accManager.MaxCombo < Good[RTListIndex])
-				return " (" + color_red + font_large + Good[RTListIndex] + "</size></color>|" + font_normal + color_white + Better[RTListIndex] + "|" + Best[RTListIndex] + ")</size></color>";
+				return "  " + color_red + font_large + Good[RTListIndex] + "</size></color>|" + font_normal + color_white + Better[RTListIndex] + "|" + Best[RTListIndex] + "</size></color>";
 			else if (accManager.MaxCombo < Better[RTListIndex])
-				return " (" + color_green + font_large + Good[RTListIndex] + "</size></color>|" + font_normal + color_white + Better[RTListIndex] + "|" + Best[RTListIndex] + ")</size></color>";
+				return "  " + color_green + font_large + Good[RTListIndex] + "</size></color>|" + font_normal + color_white + Better[RTListIndex] + "|" + Best[RTListIndex] + "</size></color>";
 			else if (accManager.MaxCombo < Best[RTListIndex])
-				return " (" + Good[RTListIndex] + "|" + font_large + color_green + Better[RTListIndex] + "</size></color>|" + font_normal + color_white + Best[RTListIndex] + ")</size></color>";
+				return "  " + Good[RTListIndex] + "|" + font_large + color_green + Better[RTListIndex] + "</size></color>|" + font_normal + color_white + Best[RTListIndex] + "</size></color>";
 			else // if (accManager.MaxCombo < Good[RTListIndex])
-				return " (" + Good[RTListIndex] + "|" + Better[RTListIndex] + "|" + font_large + color_green + Best[RTListIndex] + "</size></color>" + font_normal + color_white + ")</size></color>";
+				return "  " + Good[RTListIndex] + "|" + Better[RTListIndex] + "|" + font_large + color_green + Best[RTListIndex] + "</size></color>" + font_normal + color_white + "</size></color>";
 
 			// ... previous boring version
 			// return " (" + Good[RTListIndex] + "|" + Better[RTListIndex] + "|" + Best[RTListIndex] + ")";
@@ -82,7 +82,6 @@ namespace ACC.Utils
 			// use math to convert AccuracyThreshold to list index integer
 			int RTListIndex = (currentAccuracyThreshold - 50) / 10;
 
-			// bounds check
 			if (RTListIndex < 0)  // nicely formatted bounds check :)
 			{
 				RTListIndex = 0;

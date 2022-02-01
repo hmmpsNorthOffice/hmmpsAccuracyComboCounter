@@ -253,7 +253,7 @@ namespace ACC
 
 				maxComboCounter.text = accManager.InsertValuesInFormattedString(config.MaxComboCounterText);
 #else
-				// remove Easter Egg text if is there
+				// remove Easter Egg text if it is there
 				maxComboCounter.text = accManager.InsertValuesInFormattedString(Utils.RollingThreshold.RE(config.MaxComboCounterText));
 #endif
 

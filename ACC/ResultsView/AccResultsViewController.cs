@@ -99,8 +99,8 @@ namespace ACC.ResultsView
 
 				maxComboText = accManager.InsertValuesInFormattedString(maxComboText);
 
-				// Append formatted Threshold Targets to maxComboText ... example "Max ACC Combo  (50|100|200)"
-				// Ideas for better formatting?  Not happy with it yet.
+				// Append formatted Threshold Targets to maxComboText ... example "Acc Combo  50|100|200"
+				// Ideas for better formatting?  Not happy with it yet.  [removed MAX ... brevity > correctness]
 				if (Utils.RollingThreshold.RollingThresholdEnabled())
 				{
 					maxComboText = maxComboText + Utils.RollingThreshold.RT_Info(accManager, previousAccThreshold);
